@@ -35,7 +35,7 @@ export class BookingListComponent implements OnInit {
 
     modalRef.result.then(result => {
       if (result === 'Aceptar') {
-        console.log('Ha pulsado boorrar reserva');
+        console.log('Ha pulsado borrar reserva');
         this.deleteById(bookings);
 
       }
