@@ -1,0 +1,86 @@
+<div style="position: relative; top: -150px;  width: 100%; height: 100px; z-index: -1; ">
+  <img class="img-fluid" src="/assets/img/booking-list.jpg" >
+</div>
+
+<div class="card mt-5 px-4 naranja-border" style="position:relative; margin-left: 120px; margin-right: 120px; z-index: 0;">
+  <div class="row">
+    @if (showConfirmMessage) {
+      <ngb-alert type="warning" [dismissible]="false" class="mt-4 mb-3" style="min-height: 200px">
+        <p>La reserva se ha eliminado correctamente</p>
+        
+        <div style="text-align: center;">
+          <i class="bi bi-check-lg" style="font-size: 4em;"></i>
+      </div>
+    
+        Para cualquier duda contacte con soporte&commat;casaRural.com
+      </ngb-alert>
+      <button class="w-100 btn btn-outline-naranaja btn-lg" style="margin-bottom: 20px;" routerLink="/home">Salir</button>
+    
+    
+    }    
+
+    <div class="col-16">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house-fill mt-4" viewBox="0 0 16 16" style="margin-top: 30px; margin-left: 350px; position: absolute; z-index: 1; color:#000000" >
+        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+      </svg> 
+      <h4 class="mb-2 mt-5" style="text-align: center;">Listado de Reservas</h4>
+      <br>
+      <table class="table ">
+
+        <thead>
+
+            <tr>
+            <th scope="col" style="color: #f57d00" ><i class="bi bi-calendar-day" style="margin-right: 7px;"></i>Fecha de entrada</th>
+            <!-- <th scope="col">Fecha de salida</th> -->
+            <th scope="col" style="color: #f57d00"><i class="bi bi-calendar-day" style="margin-right: 7px;"></i>Fecha de salida</th>
+            <th scope="col" style="color: #f57d00"><i class="bi bi-geo-alt-fill" style="margin-right: 7px;"></i>Destino</th>
+            <th scope="col" style="text-align: right; color: #f57d00">Acciones</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+            </tr>
+            <br>
+              </thead>
+              
+              <tbody>
+                @for (booking of bookings; track booking.id) {
+                <tr>
+                  <td>{{booking.entryDate}}</td>
+                  <td>{{booking.departureDate}}</td>
+                  <td>{{booking.destination}}</td>
+
+     
+
+                  <td>
+                    <button id="detalle" type="button" class="btn btn-outline-naranaja w-100 me-2 "
+                    [routerLink]="['/booking', booking.id, 'detail']">
+                    <i class="bi bi-eye"></i>
+                    Detalle</button>
+                    <td>
+                    <button id="Borrar" class="btn btn-outline-naranaja w-100  " 
+                    (click)="openModal(content, booking)">Eliminar</button>
+                  </td>
+                </tr>
+                 }
+
+            </tbody>      
+
+          </table>
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title">¿Desea eliminar esta reserva?</h4>
+      <button type="button" class="btn-close" aria-label="Cancelar" (click)="modal.dismiss('Cancelar')"></button>
+  
+</div>
+  <div class="modal-body">
+      <p>Para continuar pulse aceptar</p>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close('Aceptar')">Aceptar</button>
+  <button type="button" class="btn btn-danger" (click)="modal.close('Cancelar')">Cancelar</button>
+  </div>
+</ng-template>

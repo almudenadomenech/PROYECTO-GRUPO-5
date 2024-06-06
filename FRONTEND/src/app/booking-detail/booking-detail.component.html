@@ -1,0 +1,54 @@
+<div style="position: relative; top: -150px;  width: 100%; height: 150px; z-index: -1; ">
+  <img class="img-fluid" src="/assets/img/bookin-detail.jpg" >
+</div>
+
+<div class="card mt-1 px-4 naranja-border" style="position:relative; margin-left: 120px; margin-right: 120px; z-index: 0;">
+  <div class="row">
+      <div class="col-12">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16" style="margin-top: 40px; margin-left: 350px; position: absolute; z-index: 1; color:#000000" >
+          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+          <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+        </svg>
+        <h4 class="mt-5" style="text-align: center;">Detalle de la reserva </h4>
+      </div>
+      <div class="col-12">
+
+        @if(booking){
+          <table class="table mt-4">
+            <thead>
+                  <tr>
+                    <th scope="col" style="color: #f57d00"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16" style="margin-right: 10px; margin-bottom: 5px; color:#f57d00" >
+                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                      <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                    </svg>Nombre de la Casa</th>
+                    <!-- <th scope="col">Dirección</th> -->
+                    <th scope="col" style="color: #f57d00"><i class="bi bi-signpost-fill" style=" margin-right: 7px;"></i>Dirección</th>
+                    <th scope="col" style="color: #f57d00"><i class="bi bi-telephone-fill" style=" margin-right: 7px;"></i>Teléfono</th>                  
+                    <th scope="col" style=color:#f57d00><i class="bi bi-envelope-at-fill" style=" margin-right: 7px;"></i>Email</th>
+                    <th scope="col" style="color: #f57d00"> <i class="bi bi-geo-alt-fill" style=" margin-right: 7px;" ></i>Ubicación</th>
+                    <th scope="col" style="color: #f57d00"><i class="bi bi-credit-card" style=" margin-right: 7px;"></i>Precio</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td>{{booking.house?.title}}</td>
+                    <td>{{booking.house?.address}}</td>
+                    <td>{{booking.house?.phone}}</td>
+                    <td>{{booking.house?.email}}</td>
+                    <td>{{booking.house?.destination}}</td>
+                    <td>{{booking.price}}€</td> 
+                  </tr>
+                <br>
+                </tbody>
+              </table>
+              
+              
+            }@else {
+              <p>Reserva no encontrada.</p>
+              }
+          </div>
+          <button type="button" class="btn btn-outline-naranaja w-25 mb-4" routerLink="/booking" style="margin-left: 800px;">Volver</button>
+      </div>
+    </div>    

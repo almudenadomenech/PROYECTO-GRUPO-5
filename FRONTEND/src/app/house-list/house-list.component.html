@@ -1,0 +1,131 @@
+<div class="container ">
+  <div class="row ">
+    <div class="col-12">
+
+      @if (showConfirmMessage) {
+        <ngb-alert type="warning" [dismissible]="false" class="mt-4 mb-3" style="min-height: 200px">
+          <p>La casa se ha eliminado correctamente</p>
+          
+          <div style="text-align: center;">
+            <i class="bi bi-check-lg" style="font-size: 4em;"></i>
+        </div>
+      
+          Para cualquier duda contacte con soporte&commat;casaRural.com
+        </ngb-alert>
+        <button class="w-100 btn btn-outline-naranaja btn-lg" style="margin-bottom: 20px;" routerLink="/home">Volver</button>
+      
+      
+      }    
+       <div class="album py-5 bg-white">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
+              
+     
+              @for (house of houses; track house) {
+                <div class="col">
+
+                  <div class="card shadow-sm">
+                  
+                    <a [routerLink]="['/houses', house.id, 'detail']">
+                      @if(house.photoUrl){
+                     
+                      <img class="bd-placeholder-img card-img-top highlight-on-hover" [src]="'http://localhost:3000/uploads/' + house.photoUrl" alt="Imagen">
+
+
+                      } @else {
+                        <img class="bd-placeholder-img card-img-top" src="/assets/img/default.jpg">
+
+                      }
+                    </a>
+                      <div class="card-body">
+                        <p class="card-text"> <strong>{{house.title}}</strong>
+                          <br>
+                          
+                          
+                          <ngb-rating [rate]="4" style="color:#f57d00;"></ngb-rating> 
+                          <br>
+                          <br>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16" style="margin-right: 10px; margin-bottom: 12px; color:#000000" >
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+                          </svg> Casa Rural Completa
+                          <br>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16" style="margin-bottom: 10px; margin-right: 10px; color:#000000">
+                            <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                          </svg>  {{house.places}}  plazas
+                          <br>
+                          <i class="bi bi-geo-alt-fill" style=" margin-right: 15px;" ></i> {{house.destination}}
+                          <br>
+                          <br>
+                          Desde {{house.price}}€ /noche
+                        </p>
+                        
+                        
+    
+                        @if (isAdmin) {
+                        <button type="button" class="btn btn-outline-naranaja btn-house-list py-2" [routerLink]="['/houses', house.id, 'update']">
+                          Editar</button>
+                          }
+
+                        @if(isAdmin){
+                          <!-- <button class="btn btn-outline-naranaja btn-house-list py-2 ms-1 " (click)="deleteById(house.id)"> Borrar</button> -->
+                        <button id="Borrar" class="btn btn-outline-naranaja btn-house-list py-2 ms-1 " (click)="openModal(content, house)"> Eliminar</button>
+                        }
+    
+    
+    
+                        <div class="d-flex justify-content-between align-items-center">
+    
+                      </div>
+                    </div>
+                  </div>
+
+
+                     
+                      <div class="d-flex justify-content-between align-items-center">
+                        
+                        
+                      </div>
+                    </div>
+              
+          }
+        
+          </div>
+        </div>
+      </div>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">¿Desea eliminar esta casa?</h4>
+          <button type="button" class="btn-close" aria-label="Cancelar" (click)="modal.dismiss('Cancelar')"></button>
+        </div>
+        <div class="modal-body">
+          <p>Para continuar pulse aceptar</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.close('Aceptar')">Aceptar</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('Cancelar')">Cancelar</button>
+        </div>
+      </ng-template>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     

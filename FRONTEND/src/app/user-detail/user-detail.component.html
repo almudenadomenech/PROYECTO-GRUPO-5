@@ -1,0 +1,55 @@
+<div style="position: relative; top: -160px;  width: 100%; height: 150px; z-index: -1; ">
+  <img class="img-fluid" src="/assets/img/user-detail.jpg" style="opacity: 0.9;" >
+</div>
+
+<div class="card mt-0 px-4 naranja-border" style="position:relative; margin-left: 120px; margin-right: 120px; z-index: 0;">
+  <div class="row">
+    <div class="col-12">
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16" style="margin-top: 35px; margin-left: 350px; position: absolute; z-index: 1; color:#000000">
+        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+      </svg>
+      <h4 class=" mt-5" style="text-align: center;" >Detalle del usuario </h4>
+
+            @if(user){
+                <table class="table mt-5">
+                    <thead >
+                      <tr >
+                        <th scope="col" style="color: #f57d00">Nombre</th>
+                        <!-- <th scope="col">Dirección</th> -->
+                        <th scope="col" style="color: #f57d00">Apellido</th>
+                        <th scope="col" style="color:#f57d00"><i class="bi bi-envelope-at-fill" style=" margin-right: 7px;"></i>Email</th>
+                        <th scope="col" style="color: #f57d00"><i class="bi bi-telephone-fill" style=" margin-right: 7px;"></i>Teléfono</th>
+                        <th scope="col" style="color: #f57d00"><i class="bi bi-signpost-fill" style=" margin-right: 7px;"></i>Dirección</th>
+                        <th scope="col" style="color: #f57d00"><i class="bi bi-geo-alt-fill" style=" margin-right: 7px;" ></i>Ciudad</th>
+                        
+                      </tr>
+                      <br>
+                      <br>
+                    </thead>
+                    <tbody >
+                      <tr>
+                        
+                        <td >{{user.firstName}}</td>
+                        <td >{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.street}}</td>
+                        <td>{{user.city}}</td>
+                        
+                      </tr>
+  
+                    </tbody>
+                  </table>
+  
+  
+              
+  
+            }@else {
+            <p>Usuario no encontrado.</p>
+            }
+        </div>
+        <button type="button" class="btn btn-outline-naranaja w-25 mb-4" routerLink="/user" style="margin-left: 800px;">Volver</button>
+    </div>
+  </div>
+  

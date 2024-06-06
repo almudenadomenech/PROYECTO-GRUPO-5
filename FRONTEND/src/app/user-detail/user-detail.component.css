@@ -1,0 +1,23 @@
+th{
+  color: #000000;
+}
+
+.naranja-border {
+  border: 2px solid #f57d00;
+}
+p{
+  font-size: 20px;
+
+}
+.table-responsive {
+  overflow-x: auto;
+}
+.btn-outline-naranaja {
+  color: #ffffff;
+  background-color: rgb(60, 56, 56);
+}
+
+.btn-outline-naranaja:hover {
+  color: #ffffff;
+  background-color: #f57d00;
+}

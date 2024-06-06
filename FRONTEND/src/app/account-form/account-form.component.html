@@ -1,0 +1,119 @@
+<div class="card mt-5 px-4 naranja-border" style="position:relative; margin-left: 120px; margin-right: 120px;">
+    <div class="row">
+        <div class="col">
+
+            @if (showConfirmMessage) {
+                <ngb-alert type="warning" [dismissible]="false" class="mt-4 mb-3" style="min-height: 200px">
+                  Se ha modificado su usario correctamente.          
+                  
+                  
+                  <div style="text-align: center;">
+                    <i class="bi bi-check-lg" style="font-size: 4em;"></i>
+                </div>
+              
+                  Para cualquier duda contacte con soporte&commat;casaRural.com
+                </ngb-alert>
+                <button class="w-100 btn btn-outline-naranaja btn-lg" style="margin-bottom: 20px;" 
+                routerLink="/home">Volver </button>
+        
+        
+              } 
+            <h4 class="mt-3" style="color: #f57d00">Mi perfil</h4>
+
+            <h4 style="margin-top: 20px;"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16" style="margin-right: 10px;">
+                <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5"/>
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+              </svg>Datos de contacto</h4>
+            <form class="mt" [formGroup]="userForm" (ngSubmit)="save()">
+
+                <input type="hidden" formControlName="id">
+
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-4">
+                        <label for="firstName">Nombre </label>
+                        <input type="text" class="form-control mt-2" id="firstName" formControlName="firstName"
+                            placeholder="" aria-label="firstName">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="lastName">Apellido</label>
+                        <input type="text" class="form-control mt-2" id="lastName" formControlName="lastName" placeholder=""
+                            aria-label="lastName">
+                    </div>
+
+                    <div class="col-4">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control mt-2" id="email" formControlName="email" placeholder=""
+                            aria-label="email">
+                    </div>
+
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-4">
+                            <label for="phone">Teléfono</label>
+                            <input type="text" class="form-control mt-2" id="phone" formControlName="phone" placeholder=""
+                                aria-label="phone">
+                        </div>
+                        <div class="col-4">
+                            <label for="nif">Nif</label>
+                            <input type="text" class="form-control mt-2" id="nif" formControlName="nif" placeholder=""
+                                aria-label="nif">
+                        </div>
+                        <div class="col-4">
+                            <label for="password">Contraseña</label>
+                            <input type="text" class="form-control mt-2" id="password" formControlName="password"
+                                placeholder="" aria-label="password">
+                        </div>
+
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-4">
+                                <label for="street">Dirección</label>
+                                <input type="text" class="form-control mt-2" id="street" formControlName="street"
+                                    placeholder="" aria-label="stree">
+                            </div>
+                            <div class="col-4">
+                                <label for="city">Ciudad</label>
+                                <input type="text" class="form-control mt-2" id="city" formControlName="city" placeholder=""
+                                    aria-label="city">
+                            </div>
+                            <div class="col-4">
+                                <label for="postalCode">Código postal</label>
+                                <input type="text" class="form-control mt-2" id="postalCode" formControlName="postalCode"
+                                    placeholder="" aria-label="postalCode">
+                            </div>
+
+                        </div>
+                        <div class="mt-4 mb-3" style="margin-left: 20px;">
+                            <button class="btn btn-outline-naranaja w-25 py-2 mb-3 " type="submit">Guardar</button>
+                            <span style="margin-left: 110px;"></span>
+                            
+                           
+                            <button class="btn btn-outline-naranaja w-25 py-2 mb-3" type="submit"
+                                routerLink="/home">Cancelar</button>
+                            <span style="margin-left: 110px;"></span>
+                           
+                                <button class="btn btn-outline-naranaja w-25 py-2 mb-3" type="submit"
+                                routerLink="/account/avatar">Sube tu foto de perfil</button>
+                                <span style="margin-left: 110px;"></span>
+                          
+                            
+                             @if(isAdmin){
+                                <button class="btn btn-outline-naranaja w-25 py-2 mb-3" [routerLink]="['/user']">
+                                    Volver a la lista de usuarios</button>
+                                    <span style="margin-left: 110px;"></span>
+                            }
+
+                        </div>
+
+
+                        
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

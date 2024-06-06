@@ -1,0 +1,53 @@
+<div class="card mt-5 px-4 naranja-border" style="position:relative; margin-left: 120px; margin-right: 120px;">
+  <div class="row">
+    <div class="col-lg-8">
+
+      @if (showConfirmMessage) {
+        <ngb-alert type="warning" [dismissible]="false" class="mt-4 mb-3" style="min-height: 200px">
+         Su foto se ha subido correctamente.          
+          
+          
+          <div style="text-align: center;">
+            <i class="bi bi-check-lg" style="font-size: 4em;"></i>
+        </div>
+      
+          Para cualquier duda contacte con soporte&commat;casaRural.com
+        </ngb-alert>
+       <!--  <button class="w-100 btn btn-outline-naranaja btn-lg" style="margin-bottom: 20px;" 
+        routerLink="/home">Volver </button> -->
+
+
+      } 
+      
+        <span style="margin-left: 110px;"></span>
+        <h4 class="mt-4 mb-4"><i class="bi bi-camera-fill" style="color:#f57d00; margin-right: 17px;"></i>Foto de usuario</h4>
+      
+      <form>
+
+        <div class="input-group mb-3 mt-4">
+          <label class="input-group-text" for="photoUrl">Subir foto</label>
+          <input type="file" class="form-control" id="photoUrl" (change)="onFileChange($event)">
+        </div>
+
+        <button class="btn btn-outline-naranaja w-25 py-2 mb-4 mt-3" type="button" (click)="save()">Subir foto</button>
+        <span style="margin-left: 50px;"></span>
+        <button class="btn btn-outline-naranaja w-25 py-2 mb-4 mt-3" type= "submit" routerLink="/account">Volver</button>
+      </form>
+
+    </div>
+    <div class="col-lg-4">
+
+      @if (photoPreview) {
+        <h4 class="my-4 ">Foto de perfil</h4>
+        <img class="img-fluid mb-3 rounded-circle" [src]="photoPreview" style="width: 80px; height: 80px;">
+    }
+    @if (!photoPreview && user?.photoUrl) {
+        <!-- <h4 class="my-5">Avatar existente</h4> -->
+        <img class="img-fluid mt-4 mb-5" [src]="'http://localhost:3000/uploads/' + user?.photoUrl">
+    } 
+ <!--    @else {
+      <img class="bd-placeholder-img" src="/assets/img/Usuario2.png" style="width: 80px;">
+    } -->
+  </div>
+</div>
+</div>
