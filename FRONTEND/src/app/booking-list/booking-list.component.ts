@@ -35,7 +35,7 @@ export class BookingListComponent implements OnInit {
 
     modalRef.result.then(result => {
       if (result === 'Aceptar') {
-        console.log('Ha pulsado borrar reserva');
+        console.log('Ha pulsado boorrar reserva');
         this.deleteById(bookings);
 
       }
@@ -65,8 +65,3 @@ export class BookingListComponent implements OnInit {
   }
 
 }
-
-
-
-
-

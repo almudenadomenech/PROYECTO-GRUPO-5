@@ -65,5 +65,3 @@ openModal(content: TemplateRef<any>, users: User) {
 
   
   }
-
-

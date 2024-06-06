@@ -128,6 +128,3 @@ findWithFilter(@Query() filters: any) {
 }
 
 }
-
-
-
