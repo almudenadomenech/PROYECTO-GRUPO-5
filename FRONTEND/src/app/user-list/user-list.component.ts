@@ -36,7 +36,7 @@ openModal(content: TemplateRef<any>, users: User) {
 
   modalRef.result.then(result => {
     if (result === 'Aceptar'){
-      console.log('Ha pulsado boorrar usuario');
+      console.log('Ha pulsado borrar usuario');
       this.deleteById(users);
       
     }
