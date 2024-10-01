@@ -95,7 +95,17 @@ ng new frontend --skip-git --style=css --routing=true --ssr=false
 4. Boostrap:
   ng add @ng-bootstrap/ng-bootstrap
 
+##  actualizar a la ultima version de angular:
+1. Mirar la version que tenemos:
+    ng version
 
+2. Actualizar a la ultima version:
+ bash npm install -g @angular/cli@latest
+
+3. Actualizar un proyecto a la ultima version:
+Cualquiera de las 2 opciones
+  1. ng update @angular/core@latest
+  2. ng update
 
 ## FUNCIONALIDAD ACTUALIZAR PRODUCTO (PUT)
 
